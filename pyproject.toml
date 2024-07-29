@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "mynoodles"
+version = "0.1.0"
+description = ""
+authors = ["Spaceocean <spaceocean@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.7"
+djangorestframework = "^3.15.2"
+pillow = "^10.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
