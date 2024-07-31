@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1><a href="{% url 'noodle_list_view' %}">НА ГЛАВНУЮ</a></h1>
+<h3>Показано на странице: {{noodles|length}} штук(и)</h3>
     <div style="display: grid; grid-gap: 5px; grid-template-columns: repeat( auto-fill, 300px )">
         {% for noodle in noodles %}
         <div style="margin-left: 10px; padding: 20px; border: 0.1rem outset black;
@@ -19,7 +20,9 @@
                 {{ noodle.country_id.name }}</a></p>
             <p>{{ noodle.description }}</p>
             {% if noodle.recommendation %}
-            <h2 style="height: 50px; color: green; ">Рекомендовано</h2>
+            <h3 style="height: 50px; color: green; ">
+                <a href="{% url 'recommendation_noodle_list_view' %}">
+                    Рекомендовано</a></h3>
             {% endif %}
         </div>
         {% endfor %}

@@ -18,6 +18,7 @@ class NoodlesViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         country = self.request.query_params.get("country", None)
         manufacturer = self.request.query_params.get("manufacturer", None)
+        recommendation = self.request.query_params.get("recommendation", None)
         if country is not None:
             queryset = (
                 Noodle.objects.select_related("manufacturer_id")
@@ -29,6 +30,12 @@ class NoodlesViewSet(viewsets.ModelViewSet):
                 Noodle.objects.select_related("manufacturer_id")
                 .select_related("country_id")
                 .filter(manufacturer_id=manufacturer)
+            )
+        if recommendation is not None:
+            queryset = (
+                Noodle.objects.select_related("manufacturer_id")
+                .select_related("country_id")
+                .filter(recommendation=True)
             )
         return queryset
 
@@ -49,5 +56,11 @@ def manufacturer_noodle_list_view(request, manufacturer_id: int):
     response = requests.get(
         f"http://127.0.0.1:8000/api/noodles/?manufacturer={manufacturer_id}"
     )
+    noodles = response.json()
+    return render(request, "index.html", {"noodles": noodles})
+
+
+def recommendation_noodle_list_view(request):
+    response = requests.get("http://127.0.0.1:8000/api/noodles/?recommendation=True")
     noodles = response.json()
     return render(request, "index.html", {"noodles": noodles})
