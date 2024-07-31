@@ -17,6 +17,7 @@
                 {{ noodle.manufacturer_id.name }}</a></p>
             <p><a href="{% url 'country_noodle_list_view' noodle.country_id.id %}">
                 {{ noodle.country_id.name }}</a></p>
+            <p>{{ noodle.description }}</p>
             {% if noodle.recommendation %}
             <h2 style="height: 50px; color: green; ">Рекомендовано</h2>
             {% endif %}
