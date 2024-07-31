@@ -5,6 +5,7 @@ from .views import NoodlesViewSet
 router = DefaultRouter()
 router.register(r"noodles", NoodlesViewSet)
 
+
 urlpatterns = [
     path("", include(router.urls)),
 ]
