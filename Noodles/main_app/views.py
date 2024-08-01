@@ -35,3 +35,9 @@ def recommendation_noodle_list_view(request):
     response = NoodlesViewSet.queryset
     noodles = response.filter(recommendation=True)
     return render(request, "index.html", {"noodles": noodles})
+
+
+def get_pho(request):
+    response = NoodlesViewSet.queryset
+    noodles = response.filter(title__startswith="Pho")
+    return render(request, "index.html", {"noodles": noodles})

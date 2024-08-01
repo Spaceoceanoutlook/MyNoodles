@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/noodles_icon.png" type="image/png">
     <title>Моя лапша</title>
 </head>
 <body>
 <h1><a href="{% url 'noodle_list_view' %}">НА ГЛАВНУЮ</a></h1>
+<h2><a href="{% url 'get_pho' %}">Все Фо тут</a></h2>
 <h3>Показано на странице: {{noodles|length}} штук(и)</h3>
     <div style="display: grid; grid-gap: 5px; grid-template-columns: repeat( auto-fill, 300px )">
         {% for noodle in noodles %}
