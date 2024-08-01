@@ -35,5 +35,7 @@ class Noodle(models.Model):
     )
     recommendation: bool = models.BooleanField(verbose_name="Рекомендуется")
 
+    objects = models.Manager()
+
     def __str__(self):
         return self.title

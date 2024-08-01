@@ -25,7 +25,7 @@ urlpatterns = [
         name="manufacturer_noodle_list_view",
     ),
     path(
-        "recommendation",
+        "recommendation/",
         recommendation_noodle_list_view,
         name="recommendation_noodle_list_view",
     ),

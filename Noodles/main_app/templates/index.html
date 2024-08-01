@@ -13,7 +13,7 @@
         <div style="margin-left: 10px; padding: 20px; border: 0.1rem outset black;
         width: 15em; text-align: center; font-family: sans-serif;">
             <div style="font-size: 24px; color: #457595; height: 90px;">{{ noodle.title }}</div>
-            <img style="width: 150px;" src="{{ noodle.image }}">
+            <img style="width: 150px;" src="{{ noodle.image.url }}">
             <p><a href="{% url 'manufacturer_noodle_list_view' noodle.manufacturer_id.id %}">
                 {{ noodle.manufacturer_id.name }}</a></p>
             <p><a href="{% url 'country_noodle_list_view' noodle.country_id.id %}">
