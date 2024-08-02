@@ -14,13 +14,18 @@
         {% for noodle in noodles %}
         <div style="margin-left: 10px; padding: 20px; border: 0.1rem outset black;
         width: 15em; text-align: center; font-family: sans-serif;">
-            <div style="font-size: 24px; color: #457595; height: 90px;">{{ noodle.title }}</div>
-            <img style="width: 150px;" src="{{ noodle.image.url }}">
-            <p><a href="{% url 'manufacturer_noodle_list_view' noodle.manufacturer_id.id %}">
+            <div style="font-size: 24px; color: #457595; height: 90px; height: 60px;">{{ noodle.title }}</div>
+            <div style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                <img style="width: 150px;" src="{{ noodle.image.url }}">
+            </div>
+            <p style="height: 20px;"><a href="{% url 'manufacturer_noodle_list_view' noodle.manufacturer_id.id %}">
                 {{ noodle.manufacturer_id.name }}</a></p>
             <p><a href="{% url 'country_noodle_list_view' noodle.country_id.id %}">
                 {{ noodle.country_id.name }}</a></p>
-            <p>{{ noodle.description }}</p>
+            <div style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                <p>{{ noodle.description }}</p>
+            </div>
+
             {% if noodle.recommendation %}
             <h3 style="height: 50px; color: green; ">
                 <a href="{% url 'recommendation_noodle_list_view' %}">
