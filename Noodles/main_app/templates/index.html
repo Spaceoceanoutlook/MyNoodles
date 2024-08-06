@@ -9,6 +9,10 @@
 <body>
 <h1><a href="{% url 'noodle_list_view' %}">НА ГЛАВНУЮ</a></h1>
 <h2><a href="{% url 'get_pho' %}">Все Фо тут</a></h2>
+<form action="{% url 'search' %}" method="GET">
+    <input type="text" name="query" placeholder="" required>
+    <button type="submit">Найти</button>
+</form>
 <h3>Показано на странице: {{noodles|length}} штук(и)</h3>
     <div style="display: grid; grid-gap: 5px; grid-template-columns: repeat( auto-fill, 300px )">
         {% for noodle in noodles %}

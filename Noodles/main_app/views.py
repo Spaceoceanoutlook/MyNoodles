@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from .models import Noodle
 from .serializers import NoodlesSerializer
 from django.shortcuts import render
+from django.db.models import Q
 
 
 class NoodlesViewSet(viewsets.ModelViewSet):
@@ -40,4 +41,16 @@ def recommendation_noodle_list_view(request):
 def get_pho(request):
     response = NoodlesViewSet.queryset
     noodles = response.filter(title__startswith="Pho")
+    return render(request, "index.html", {"noodles": noodles})
+
+
+def search(request):
+    query = request.GET.get("query", "").title()
+    response = NoodlesViewSet.queryset
+    noodles = response.filter(
+        Q(title__startswith=query)
+        | Q(manufacturer_id__name__startswith=query)
+        | Q(country_id__name__startswith=query)
+    )
+    print(noodles)
     return render(request, "index.html", {"noodles": noodles})
