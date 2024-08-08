@@ -52,5 +52,10 @@ def search(request):
         | Q(manufacturer_id__name__startswith=query)
         | Q(country_id__name__startswith=query)
     )
-    print(noodles)
+    return render(request, "index.html", {"noodles": noodles})
+
+
+def noodle(request, noodle_id: int):
+    response = NoodlesViewSet.queryset
+    noodles = response.filter(id=noodle_id)
     return render(request, "index.html", {"noodles": noodles})
