@@ -2,14 +2,16 @@ from django.db import models
 
 
 class Country(models.Model):
-    name: str = models.CharField(max_length=100, verbose_name="Страна")
+    name: str = models.CharField(max_length=100, verbose_name="Страна", unique=True)
 
     def __str__(self):
         return self.name
 
 
 class Manufacturer(models.Model):
-    name: str = models.CharField(max_length=100, verbose_name="Производитель")
+    name: str = models.CharField(
+        max_length=100, verbose_name="Производитель", unique=True
+    )
 
     def __str__(self):
         return self.name
