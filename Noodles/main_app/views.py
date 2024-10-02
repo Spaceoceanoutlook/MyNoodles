@@ -11,8 +11,7 @@ class NoodlesViewSet(viewsets.ModelViewSet):
     queryset = (
         Noodle.objects.select_related("manufacturer_id")
         .select_related("country_id")
-        .all()
-        .order_by("-id")
+        .order_by('-id')
     )
 
 
