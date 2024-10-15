@@ -7,6 +7,8 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    objects = models.Manager()
+
 
 class Manufacturer(models.Model):
     name: str = models.CharField(
@@ -15,6 +17,8 @@ class Manufacturer(models.Model):
 
     def __str__(self):
         return self.name
+
+    objects = models.Manager()
 
 
 class Noodle(models.Model):

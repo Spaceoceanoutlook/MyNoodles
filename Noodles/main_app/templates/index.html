@@ -9,7 +9,18 @@
 </head>
 <body>
 <h1><a href="{% url 'noodle_list_view' %}">НА ГЛАВНУЮ</a></h1>
-<h2><a href="{% url 'get_pho' %}">Все Фо тут</a></h2>
+<h2>
+{% for country in countries %}
+    <a href="{% url 'country_noodle_list_view' country.id %}">
+        {{ country.name }}</a>
+{% endfor %}
+</h2>
+<h2>
+    {% for k, v in manufactures.items %}
+    <a href="{% url 'manufacturer_noodle_list_view' v %}">
+        {{ k }}</a>
+    {% endfor %}
+</h2>
 <h2><a href="{% url 'recommendation_noodle_list_view' %}">Рекомендовано</a></h2>
 <form action="{% url 'search' %}" method="GET">
     <input type="text" name="query" placeholder="" required>

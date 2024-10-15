@@ -8,7 +8,6 @@ from main_app.views import (
     country_noodle_list_view,
     manufacturer_noodle_list_view,
     recommendation_noodle_list_view,
-    get_pho,
     search,
     noodle,
 )
@@ -32,7 +31,6 @@ urlpatterns = [
         recommendation_noodle_list_view,
         name="recommendation_noodle_list_view",
     ),
-    path("pho/", get_pho, name="get_pho"),
     path("search/", search, name="search"),
     path("noodle/<int:noodle_id>/", noodle, name="noodle"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
